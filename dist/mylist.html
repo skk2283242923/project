@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的鸟巢</title>
+  <link href="http://www.zbird.com/favicon.ico" type="image/x-icon" rel="shortcut icon">
+  <script src="js/jquery.js"></script>
+  <link rel="stylesheet" href="css/mylist.css">
+</head>
+
+<body>
+  <header></header>
+  <section>
+    <div class="top">
+      <a href="/">首页</a>>我的订单
+    </div>
+    <div class="main">
+      <div class="left">
+        <div class="items">交易管理</div>
+        <div class="item">
+          <a href="#">我的鸟巢</a>
+        </div>
+        <div class="item">
+          <a href="#">我的预约</a>
+        </div>
+        <div class="item">
+          <a href="#">我的订单</a>
+        </div>
+        <div class="item">
+          <a href="#">我的积分</a>
+        </div>
+        <div class="item">
+          <a href="#">我的礼券</a>
+        </div>
+        <div class="item">
+          <a href="#">我的礼品</a>
+        </div>
+        <div class="item">
+          <a href="#">我的评价</a>
+        </div>
+        <div class="items">会员中心</div>
+        <div class="item">
+          <a href="#">个人资料</a>
+        </div>
+        <div class="item">
+          <a href="#">账户安全</a>
+        </div>
+        <div class="item">
+          <a href="#">地址管理</a>
+        </div>
+        <div class="i"></div>
+       <div class="item"> <a href="#" class="exit">退出</a></div>
+      </div>
+      <div class="right">
+        <div class="order">
+          <div class="top">我的订单</div>
+          <div class="center">
+            <em class="from_code">订单编号</em>
+            <em class="from_code">商品信息</em>
+            <em class="from_code">订单金额</em>
+            <em class="from_code">已付金额</em>
+            <em class="from_code">下单时间</em>
+            <em class="from_code">订单状态</em>
+            <em class="from_code">操作</em>
+          </div>
+
+          <div class="bottom">
+            <div>
+              您暂无订单
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <footer></footer>
+  <script>
+    $(function () {
+      function init() {
+        load();
+        addGt()
+      }
+      // 加右箭头
+      function addGt() {
+        $(".item").eq(2).append("<b>&gt</b>");
+        $(".item").mouseenter(function () {
+
+          $(this).append("<b>&gt</b>");
+        }).mouseleave(function () {
+          $(this).find("b").remove()
+        })
+      }
+
+      // 引用头部和尾部的文件
+      function load() {
+        $("header").load("_header.html");
+        $("footer").load("_footer.html");
+      }
+
+      init()
+    })
+
+
+
+  </script>
+</body>
+
+</html>
