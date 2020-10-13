@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录</title>
+  <script src="js/jquery.js"></script>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+  <!-- 头部 -->
+  <header></header>
+  <!-- 中间的代码 -->
+  <section>
+    <div class="main">
+      <div class="main1">
+        <div class="login_left"></div>
+        <div class="login_right">
+          <div class="text1">会员登录</div>
+          <div class="text2"><a href="register.html">快速注册</a></div>
+          <div class="do_main">
+            <form action="#" method="get">
+              <li></li>
+              <input type="text" class="put" placeholder="用户名">
+              <li></li>
+              <input type="text" class="put" placeholder="密码">
+              <li></li>
+              <!--  -->
+              <div class="autologin">
+                <input type="checkbox" id="login_phase" class="login_phase" >
+                
+                <span>自动登录</span>
+              <div class="wangji">   <a href="/auth/findpass/" >忘记密码</a></div>
+              </div>
+              <!-- <div class="aotologin">
+                <input id="login_phase" class="login_phase" type="button" state="false" />
+                <input type='hidden' name='phase' value='311040000' />
+                <span>自动登录</span>
+                <a href="/auth/findpass/">忘记密码</a>
+              </div> -->
+              <!-- <div class="clearHeight" style="height:15px;"></div>
+              <div class="submit">
+                <input name="submit" type="button" class="btn_login_2 btn_login_6" value="登录" />
+              </div> -->
+              <!--  -->
+              <div class="clearHeight" style="height:15px;"></div>
+              <div class="submit">
+                <input name="submit" type="button" class="btn_login_2 btn_login_6" value="登录" />
+              </div>
+            </form>
+            <div class="hezuo">
+              <a href="#" class="qq-btn"></a>
+              <a href="#" class="weixin-btn"></a>
+              <a href="#" class="sina-btn"></a>
+              <a href="#" class="zhifubao-btn"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 尾部的代码 -->
+  <footer></footer>
+  <script>
+    $(function () {
+      function init() {
+        load();
+      }
+      // 引用头部和尾部的文件
+      function load() {
+
+        $("header").load("_header.html");
+        $("footer").load("_footer.html");
+
+      }
+      init();
+    })
+  </script>
+</body>
+
+</html>
