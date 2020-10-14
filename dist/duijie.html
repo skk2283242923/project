@@ -7,7 +7,10 @@
   <title>对戒</title>
   <link href="http://www.zbird.com/favicon.ico" type="image/x-icon" rel="shortcut icon">
   <script src="js/jquery.js"></script>
+  <script src="js/axios.min.js"></script>
+  <script src="js/cookie.js"></script>
   <link rel="stylesheet" href="css/duijie.css">
+
 </head>
 
 <body>
@@ -73,34 +76,21 @@
             </select>/6
           </div>
         </div>
-        <div class="bottom">
-          <div class="item2">
-            <img src="http://imu.zbird.cn/296/52/29652_99!big.jpg" alt="">
-            <div class="items2_1">纯境</div>
-            <div class="items2_2">￥6630</div>
-            <div class="items2_3">售出6938&nbsp;评论279</div>
-          </div>
-          <div class="item2"> <img src="http://imu.zbird.cn/296/52/29652_99!big.jpg" alt="">
-            <div class="items2_1">纯境</div>
-            <div class="items2_2">￥6630</div>
-            <div class="items2_3">售出6938&nbsp;评论279</div></div>
-          <div class="item2"> <img src="http://imu.zbird.cn/296/52/29652_99!big.jpg" alt="">
-            <div class="items2_1">纯境</div>
-            <div class="items2_2">￥6630</div>
-            <div class="items2_3">售出6938&nbsp;评论279</div></div>
-          <div class="item2"> <img src="http://imu.zbird.cn/296/52/29652_99!big.jpg" alt="">
-            <div class="items2_1">纯境</div>
-            <div class="items2_2">￥6630</div>
-            <div class="items2_3">售出6938&nbsp;评论279</div></div>
+        <div class="bottom" id="zhanshi11">
+          <!-- 列表 -->        
         </div>
       </div>
     </div>
   </section>
   <footer></footer>
+ 
   <script>
     $(function () {
+      let userId=getCookie('uid')
+      console.log(userId);
       function init() {
         load();
+        addData()
       }
       // 引用头部和尾部的文件
       function load() {
@@ -110,6 +100,29 @@
         setTimeout(() => {
           $(".nav .nav1 .left .item").eq(3).css("backgroundColor", "#fdb2a4")
         }, 100);
+      }
+      function addData() {
+        axios.get("http://jx.xuzhixiang.top/ap/api/allproductlist.php?uid="+userId).then(res => {
+          let data = res.data.data;          
+          // console.log(data[0].pimg.split(",")[0]);
+        //   <img src="${data[i].pimg.replace(/,,,,/, "")}" alt="">
+          let str = ''
+          for (let i = 0; i < data.length; i++) {           
+            str += `
+          <div class="item2" data-id="${data[i].pid}">
+            <img src="${data[i].pimg.split(",")[0]}" alt="">
+            <div class="items2_1">${data[i].pname}</div>
+            <div class="items2_2">￥${data[i].pprice}</div>
+            <div class="items2_3">售出${data[i].pdesc}&nbsp;评论279</div>
+          </div>`
+          }
+          $("#zhanshi11").html(str);
+          $("#zhanshi11 .item2").click(function(){
+            $(location).attr("href","details.html");
+            console.log($(this).attr("data-id"));
+            setCookie("pid",$(this).attr("data-id"),7);
+          })
+        })
       }
       init();
     })

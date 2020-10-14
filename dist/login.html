@@ -5,8 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>登录</title>
-  <link  href="http://www.zbird.com/favicon.ico" type="image/x-icon" rel="shortcut icon">
+  <link href="http://www.zbird.com/favicon.ico" type="image/x-icon" rel="shortcut icon">
   <script src="js/jquery.js"></script>
+  <script src="js/cookie.js"></script>
   <link rel="stylesheet" href="css/login.css">
 </head>
 
@@ -24,28 +25,17 @@
           <div class="do_main">
             <form action="#" method="get">
               <li></li>
-              <input type="text" class="put" placeholder="用户名">
+              <input type="text" class="put" id="username" placeholder="用户名">
               <li></li>
-              <input type="text" class="put" placeholder="密码">
+              <input type="password" class="put" id="password" placeholder="密码">
               <li></li>
               <!--  -->
               <div class="autologin">
-                <input type="checkbox" id="login_phase" class="login_phase" >
-                
+                <input type="checkbox" id="login_phase" class="login_phase">
                 <span>自动登录</span>
-              <div class="wangji">   <a href="/auth/findpass/" >忘记密码</a></div>
+                <div class="wangji"><a href="/auth/findpass/">忘记密码</a></div>
               </div>
-              <!-- <div class="aotologin">
-                <input id="login_phase" class="login_phase" type="button" state="false" />
-                <input type='hidden' name='phase' value='311040000' />
-                <span>自动登录</span>
-                <a href="/auth/findpass/">忘记密码</a>
-              </div> -->
-              <!-- <div class="clearHeight" style="height:15px;"></div>
-              <div class="submit">
-                <input name="submit" type="button" class="btn_login_2 btn_login_6" value="登录" />
-              </div> -->
-              <!--  -->
+
               <div class="clearHeight" style="height:15px;"></div>
               <div class="submit">
                 <input name="submit" type="button" class="btn_login_2 btn_login_6" value="登录" />
@@ -68,6 +58,26 @@
     $(function () {
       function init() {
         load();
+        getMessage()
+      }
+    // 获取信息
+      function getMessage() {
+        $(".btn_login_2").click(function () {
+        //  登录数据调用接口
+     
+          console.log($("#username").val(), $("#password").val());
+          $.get(`http://jx.xuzhixiang.top/ap/api/login.php?username=${$("#username").val()}&password=${$("#password").val()}`).then(res=>{
+            if(res.code==1){
+              let uid=res.data.id;
+              console.log(uid);
+              setCookie("uid",uid,7);
+              alert("登录成功");
+            }else{
+              setCookie("uid",'',7);
+              alert("请检查用户名或密码");
+            }            
+          })
+        });
       }
       // 引用头部和尾部的文件
       function load() {

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的购物车</title>
+  <link href="http://www.zbird.com/favicon.ico" type="image/x-icon" rel="shortcut icon">
+  <script src="js/jquery.js"></script>
+  <script src="js/cookie.js"></script>
+
+  <script src="js/axios.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"> </script>
+  <link rel="stylesheet" href="css/myCart.css">
+</head>
+
+<body>
+  <header></header>
+  <section id="myCart">
+    <div class="top">
+      <div class="name">商品</div>
+      <div class="price">原价</div>
+      <div class="count">数量</div>
+      <div class="sum">小计</div>
+      <div class="del">删除</div>
+    </div>
+    <div class="bottom">      
+      <!-- <div class="name">
+        <img src="http://img.zbird.cn/picdb/296/52/29652_6_.jpg" alt="">
+        <div class="disc">
+          名字
+        </div>
+      </div>
+      <div class="price">原价</div>
+      <div class="count">数量</div>
+      <div class="sum">小计</div>
+      <div class="del" data-id="1">删除</div> -->
+    </div>
+  </section>
+  <footer></footer>
+  
+  <script>
+    $(function () {
+      let userId=getCookie('uid');
+      function init() {
+        load();
+        fetch();
+        setTimeout(() => {
+
+          del1();
+        }, 100);
+      }
+      // 取购物车里的数据
+      function fetch() {
+        axios.get("http://jx.xuzhixiang.top/ap/api/cart-list.php?id="+userId).then(res => {
+   
+          if (res.data.data.length) {
+            let data = res.data.data;
+            let str = ''
+            for (let i = 0; i < data.length; i++) {
+              str += `  
+            <div class="bottom1"> 
+              <div class="name">
+                <img src="${data[i].pimg.split(",")[0]}" alt="">
+                <div class="disc">${data[i].pname}</div>
+              </div>
+              <div class="price">原价</div>
+              <div class="count">${data[i].pnum}</div>
+              <div class="sum">小计</div>
+              <div class="del" data-id="${data[i].pid}">删除</div>
+            </div>`
+            }
+            $(".bottom").html(str)
+          }else{
+            str=`<div style="font-size: 50px;height: 100px;line-height: 100px;color:red">空空如也</div>`
+             $(".bottom").html(str)
+          }
+        })
+        //  http://jx.xuzhixiang.top/ap/api/cart-list.php?id=43389   
+      }
+      function del1() {
+        // console.log($(".del"));
+        $(".del").click(function () {
+          let uid = 43389;
+          let id = $(this).attr("data-id")
+          console.log();
+          // $.get(`http://jx.xuzhixiang.top/ap/api/add-product.php?uid=43389&pid=${pid}&pnum=1`)
+          $.get(`http://jx.xuzhixiang.top/ap/api/cart-delete.php?uid=43389&pid=${id}`).then(res => {
+            alert("删除成功")
+            location.reload();
+
+          })
+          //  http://jx.xuzhixiang.top/ap/api/cart-delete.php?uid=43389&pid=id
+        })
+      }
+      function load() {
+        $("header").load("_header.html");
+        $("footer").load("_footer.html");
+      }
+      init();
+    })
+  </script>
+</body>
+
+</html>
