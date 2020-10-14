@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对戒</title>
+  <link href="http://www.zbird.com/favicon.ico" type="image/x-icon" rel="shortcut icon">
+  <script src="js/jquery.js"></script>
+  <link rel="stylesheet" href="css/duijie.css">
+</head>
+
+<body>
+  <header></header>
+  <section>
+    <div class="top">
+      <div class="left">
+        <div class="kv_txt1">对戒精选</div>
+        <div class="kv_txt2">我们用结婚对戒和情侣对戒颂扬一切形式的恒久真爱以及不变承诺。所有对戒都经由匠心工艺精心打造而成，符合严苛的标准</div>
+      </div>
+      <img src="http://im1.zbird.cn/picdb/555/112/0/4a75324063a9f05e95d21b8e1306e02b.jpg" alt="">
+    </div>
+    <div class="list_title">
+      <div class="nav1">首页&gt;对戒</div>
+      <div class="list_title1">
+
+        <div class="list_title">
+          <ul>
+            <li>
+              <span class="tit">类&nbsp;&nbsp;&nbsp;别</span>
+              <a href="#" class="list_tile_name select"><em>结婚对戒</em></a>
+              <a href="#" class="a_white"> 女对戒</a>
+              <a href="#" class="a_white"> 男对戒</a>
+            </li>
+            <li> <span class="tit">价&nbsp;&nbsp;&nbsp;格</span>
+              <a href="#" class="a_white"> 0-3000</a>
+              <a href="#" class="a_white"> 3000-5000</a>
+              <a href="#" class="a_white"> 5000-10000</a>
+              <a href="#" class="a_white"> 10000以上</a>
+            </li>
+            <li> <span class="tit">材&nbsp;&nbsp;&nbsp;质</span>
+              <a href="#" class="a_white"> 18k金</a>
+              <a href="#" class="a_white"> Pt珀金</a>
+              <a href="#" class="a_white">Pt珀金-18k金 </a>
+              <a href="#" class="search"
+                style="background: url('http://img.zbird.cn/ww3/weddings/up20200715/bottom_arrow.jpg') no-repeat right;display: inline-block; width: 70px;position: absolute; right: 20px;">高级筛选</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="show">
+      <div class="show1">
+        <div class="top1">
+          <div class="left1">
+            <select name="#" id="">
+              <option value="1">默认排序</option>
+              <option value="2">销量从高到低</option>
+              <option value="3">价格从高到低</option>
+              <option value="4">价格从低到高</option>
+              <option value="5">评论从多到少</option>
+              <option value="6">最新上架时间</option>
+            </select>
+          </div>
+          <div class="right1">
+            页数 <select name="#" id="">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>/6
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="item2">
+            <img src="http://imu.zbird.cn/296/52/29652_99!big.jpg" alt="">
+            <div class="items2_1">纯境</div>
+            <div class="items2_2">￥6630</div>
+            <div class="items2_3">售出6938&nbsp;评论279</div>
+          </div>
+          <div class="item2"> <img src="http://imu.zbird.cn/296/52/29652_99!big.jpg" alt="">
+            <div class="items2_1">纯境</div>
+            <div class="items2_2">￥6630</div>
+            <div class="items2_3">售出6938&nbsp;评论279</div></div>
+          <div class="item2"> <img src="http://imu.zbird.cn/296/52/29652_99!big.jpg" alt="">
+            <div class="items2_1">纯境</div>
+            <div class="items2_2">￥6630</div>
+            <div class="items2_3">售出6938&nbsp;评论279</div></div>
+          <div class="item2"> <img src="http://imu.zbird.cn/296/52/29652_99!big.jpg" alt="">
+            <div class="items2_1">纯境</div>
+            <div class="items2_2">￥6630</div>
+            <div class="items2_3">售出6938&nbsp;评论279</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer></footer>
+  <script>
+    $(function () {
+      function init() {
+        load();
+      }
+      // 引用头部和尾部的文件
+      function load() {
+
+        $("header").load("_header.html");
+        $("footer").load("_footer.html");
+        setTimeout(() => {
+          $(".nav .nav1 .left .item").eq(3).css("backgroundColor", "#fdb2a4")
+        }, 100);
+      }
+      init();
+    })
+  </script>
+</body>
+
+</html>
