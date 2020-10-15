@@ -22,10 +22,11 @@
       <div class="name">商品</div>
       <div class="price">原价</div>
       <div class="count">数量</div>
-      <div class="sum">小计</div>
+      <div class="sum123">小计</div>
       <div class="del">删除</div>
     </div>
-    <div class="bottom">      
+    <div class="bottom bottom111">
+
       <!-- <div class="name">
         <img src="http://img.zbird.cn/picdb/296/52/29652_6_.jpg" alt="">
         <div class="disc">
@@ -37,12 +38,13 @@
       <div class="sum">小计</div>
       <div class="del" data-id="1">删除</div> -->
     </div>
+    <div class="sum11"  style="text-align:center;height: 20px;"></div>
   </section>
   <footer></footer>
-  
+
   <script>
     $(function () {
-      let userId=getCookie('uid');
+      let userId = getCookie('uid');
       function init() {
         load();
         fetch();
@@ -53,8 +55,8 @@
       }
       // 取购物车里的数据
       function fetch() {
-        axios.get("http://jx.xuzhixiang.top/ap/api/cart-list.php?id="+userId).then(res => {
-   
+        axios.get("http://jx.xuzhixiang.top/ap/api/cart-list.php?id=" + userId).then(res => {
+          console.log(res.data);
           if (res.data.data.length) {
             let data = res.data.data;
             let str = ''
@@ -65,17 +67,26 @@
                 <img src="${data[i].pimg.split(",")[0]}" alt="">
                 <div class="disc">${data[i].pname}</div>
               </div>
-              <div class="price">原价</div>
+              <div class="price">${data[i].pprice}</div>
               <div class="count">${data[i].pnum}</div>
-              <div class="sum">小计</div>
+              <div class="sum">${data[i].pprice * data[i].pnum}</div>
               <div class="del" data-id="${data[i].pid}">删除</div>
             </div>`
             }
-            $(".bottom").html(str)
-          }else{
-            str=`<div style="font-size: 50px;height: 100px;line-height: 100px;color:red">空空如也</div>`
-             $(".bottom").html(str)
+            $(".bottom111").html(str)
+          } else {
+            str = `<div style="font-size: 50px;height: 100px;line-height: 100px;color:blue">空空如也</div>`
+            $(".bottom111").html(str)
           }
+          let ssum=0;
+          console.log($(".sum"))
+          for(var i=0;i<$(".sum").length;i++){
+            ssum+=Number($(".sum").eq(i).text())
+          }
+          console.log(ssum)
+          // ssum+= parseInt($(".sum").text())
+          // console.log(Number($(".sum").text()));
+          $(".sum11").text(ssum)
         })
         //  http://jx.xuzhixiang.top/ap/api/cart-list.php?id=43389   
       }
@@ -86,7 +97,7 @@
           let id = $(this).attr("data-id")
           console.log();
           // $.get(`http://jx.xuzhixiang.top/ap/api/add-product.php?uid=43389&pid=${pid}&pnum=1`)
-          $.get(`http://jx.xuzhixiang.top/ap/api/cart-delete.php?uid=43389&pid=${id}`).then(res => {
+          $.get(`http://jx.xuzhixiang.top/ap/api/cart-delete.php?uid=${userId}&pid=${id}`).then(res => {
             alert("删除成功")
             location.reload();
 

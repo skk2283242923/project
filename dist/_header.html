@@ -1,4 +1,3 @@
-
 <div class="top">
   <!-- 最上边 -->
   <div class="top1">
@@ -7,7 +6,9 @@
         <div class="l1">
           欢迎进入砖石小鸟官网
         </div>
-        <a href="login.html" id="login123"><p>登录</p></a>
+        <a href="login.html" id="login123">
+          <p>登录</p>
+        </a>
         <a href="register.html">注册</a>
       </div>
       <div class="right">
@@ -52,44 +53,66 @@
         <div class="right_1">
           <input type="text" placeholder="戒托">
           <img src="http://img.zbird.cn/ww3/pubheaderfooter/icon_ser.jpg" alt="">
-
         </div>
       </div>
     </div>
   </div>
 </div>
 <nav class="nav">
- <div class="nav1">
-  <div class="left">
-    <div class="item">
-      <a href="/">首页</a>
+  <div class="nav1">
+    <div class="left">
+      <div class="item">
+        <a href="/">首页</a>
+      </div>
+      <div class="item zhuanshi">
+        <a href="#">砖石</a>
+        <div class="zhuanshi1"></div>
+      </div>
+      <div class="item">
+        <a href="#">婚戒</a>
+      </div>
+      <div class="item">
+        <a href="duijie.html">对戒</a>
+      </div>
+      <div class="item">
+        <a href="#">配饰</a>
+      </div>
+      <div class="item">
+        <a href="#">定制</a>
+      </div>
+      <div class="item">
+        <a href="#">体验中心</a>
+      </div>
     </div>
-    <div class="item">
-      <a href="#">砖石</a>
-    </div>
-    <div class="item">
-      <a href="#">婚戒</a>
-    </div>
-    <div class="item">
-      <a href="duijie.html">对戒</a>
-    </div>
-    <div class="item">
-      <a href="#">配饰</a>
-    </div>
-    <div class="item">
-      <a href="#">定制</a>
-    </div>
-    <div class="item">
-      <a href="#">体验中心</a>
+    <div class="right">
+      <div class="item">
+        <a href="#">商务加盟</a>
+      </div>
+      <div class="item">
+        <a href="#">品牌故事</a>
+      </div>
     </div>
   </div>
-  <div class="right">
-    <div class="item">
-      <a href="#">商务加盟</a>
-    </div>
-    <div class="item">
-      <a href="#">品牌故事</a>
-    </div>
-  </div>
- </div>
 </nav>
+<script src="js/jquery.js"></script>
+<script>
+  $(function () {
+    $(".zhuanshi").mouseover(function () {
+      $(".zhuanshi1").show()
+
+    }).mouseout(function () {
+      $(".zhuanshi1").hide()
+    })
+    $(".zhuanshi").mouseover(function () {
+      $(".zhuanshi1").show()
+    }).mouseout(function () {
+      $(".zhuanshi1").hide()
+    })
+
+
+
+  })
+
+
+
+</script>
